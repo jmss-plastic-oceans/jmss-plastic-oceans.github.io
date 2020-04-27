@@ -93,8 +93,8 @@
 // ------------------------------------------
 
 // Client ID and API key from the Developer Console
-var CLIENT_ID = '993150457622-n59rultal6d83unt3ivuq58uspmcvgan.apps.googleusercontent.com';
-var API_KEY = 'AIzaSyAhkzGVQL90Ne2o0P1IPs5pTxv16N6ebMk';
+var CLIENT_ID = '976719396424-f10m3t8eo0irv2vaolnik2v168qqghph.apps.googleusercontent.com';
+var API_KEY = 'AIzaSyBIZAdJyzXpKYMCazOboj83Ax3HRej9S4w';
 
 // Array of API discovery doc URLs for APIs used by the quickstart
 var DISCOVERY_DOCS = ['https://docs.googleapis.com/$discovery/rest?version=v1'];
@@ -214,6 +214,7 @@ async function articleSetup() {
 
 				let newArticleLinkDivImage = document.createElement("img");
 				newArticleLinkDivImage.src = val[3];
+				newArticleLinkDivImage.classList.add("article-img");
 				newArticleLinkDivImage.classList.add(leftRight + "-img");
 				newArticleLinkDivImage.align = leftRight;
 
@@ -246,7 +247,7 @@ async function articleSetup() {
 
 				updatesWrapper.appendChild(newArticleWrapper);
 
-				document.getElementById("loading-msg").innerText = "Please wait, articles are loading... (" + Math.round(((index+1)/csvData.length)*1000)/10 + "%)";
+				document.getElementById("loading-msg").innerText = `Please wait, articles are loading... (${index+1}/${csvData.length})`;
 				console.log("Finished!");
 
 			}, error => {
