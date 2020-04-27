@@ -1,0 +1,203 @@
+
+body {
+	background-color:#f3f5f9;
+
+}
+
+.logopic {
+	text-align: center;
+}
+
+.logo {
+	width:390px;
+}
+
+hr {
+	background-color:black;
+}
+
+h5 {
+	font-family:Comfortaa;
+	font-weight: bold;
+}
+
+.footer-row {
+	margin:3px;
+}
+
+.nav-row {
+	background-color: #5caba4;
+}
+
+.navbar {
+	padding:10px;
+	width: 100%;
+}
+
+.nav {
+	padding-right: 25px;	
+	padding-left: 25px;
+	padding-top:10px;	
+	padding-bottom:10px;
+
+	font-family: comfortaa;
+	color:black;
+	font-size:15px;
+	text-align: center;
+	background-color:#5caba4;
+	text-decoration: none;
+
+	transition: 0.25s;
+}
+
+.nav:hover {
+	background-color:rgb(222, 168, 33);
+	font-weight: bold;
+	color:white;
+	font-size:16px;
+	text-decoration: none;
+
+	transition: 0.25s;
+}
+
+.intro {
+	background-color: #f3f5f9;
+}
+
+.updates {
+	background-color:#f3f5f9;
+	padding:10px;
+	text-align:center;
+	background-color: rgb(240, 240, 240);
+}
+
+.article {
+	text-decoration: none !important;
+	color: black !important;
+}
+
+h2{
+	font-family:Comfortaa;
+	font-weight: bold;
+}
+
+p {
+	font-size: 18px;
+}
+
+@media screen and (max-width: 800px) {
+	.nav {
+		font-size: 10px;
+		padding:10px;
+		}
+	.nav:hover {
+		font-size:13px;
+	}
+	p {
+		font-size: 10px;
+	}	
+	.left-img, .right-img {
+		max-height: 150px;
+		max-width: 150px;
+	}
+	.footer {
+		font-size: 10px;
+	}
+
+	span {
+		font-size: 30px;
+	}
+	.title {
+		padding-top: 100px;
+		padding-left: 10px;
+	}
+
+	.logo {
+		height: 40%;
+		width: 40%;
+	}
+	.logopic {
+		text-align: center;
+	}
+}
+
+.left-img {
+	max-height:300px;
+	max-width:300px;
+	background: orange;
+	margin-right:20px;
+
+}
+
+.right-img {
+	max-height:300px;
+	max-width:300px;
+	background:orange;
+	margin-left:20px;
+}
+
+.left-title {
+	text-align: left;
+}
+
+.title-text {
+	background-color:none;
+	padding: 10px;
+	height: 300px;
+	text-decoration: none;
+	color:black;
+}
+
+.click:hover {
+	opacity: 0.7;
+	background-color:rgb(255, 224, 204);
+	text-decoration: none;
+	color:black;
+}
+
+.title-text:hover {
+	text-decoration: none;
+}
+
+.footer {
+	background-color:#4a6f73;
+	padding:10px;
+	font-family: Comfortaa;
+	font-weight: bold;
+	color:white;
+	bottom: 0;
+	width: 100%;
+}
+
+.footer {
+	margin-top: 30px;
+	background-color:#4a6f73;
+	padding:10px;
+	font-family: Comfortaa;
+	font-weight: bold;
+	color:white;
+	position: bottom;
+	bottom: 0;
+	width: 100%;
+
+}
+
+/*subpages*/
+
+.title{
+	background-color: darkblue;
+	height:420px;
+	position: relative;
+	padding-top: 250px;
+	padding-left: 10px;
+}
+
+span {
+	font-size: 80px;
+	color: black;
+	/*background-color:rgb(255, 241, 191);*/
+	background-color: lightblue;
+	font-family:impact;
+}
+
+
