@@ -5,13 +5,23 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="favicon.png">
 	<link rel="stylesheet" type="text/css" href="index.css">
 
+	<!-- We'll load a lot of images from Instagram so this tells the browser to prepare for it -->
+	<link rel="preconnect" href="https://instagram.fmel5-1.fna.fbcdn.net">
+
+	<meta charset="utf-8">
+    <meta name="description" content="This is the official website of John Monash Science School's Plastic Oceans group.">
+	<meta name="keywords" content="Conservation,Activism,Environment,Pollution,School,Student,Health,Social">
+    <meta name="author" content="JMSS Plastic Oceans">
+    <meta name="creator" content="JMSS Plastic Oceans">
+    <meta name="color" content="rgb(240, 240, 240)">
+    <meta name="color-scheme" content="only light">
+
 	<noscript>
-
 		Javascript not enabled. Please enable to ensure website functionality.
-
 	</noscript>
 
 </head>
@@ -337,7 +347,7 @@ function instagramSetup() {
 				newInstagramPostCaption.innerText = caption;
 
 				let newInstagramIcon = document.createElement("img");
-				newInstagramIcon.src = "images/insta_icon.png";
+				newInstagramIcon.src = "images/insta_icon.webp";
 				newInstagramIcon.alt = "Instagram logo";
 				newInstagramIcon.classList.add("instagram-logo");
 
