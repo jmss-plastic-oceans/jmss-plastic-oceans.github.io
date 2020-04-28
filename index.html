@@ -92,26 +92,41 @@
 // Get articles
 // ----------------------------------
 
+// Keep some variables out of the function so they can be used for console debugging
 var csvData, docIdRegex;
 var publishedNum = 0;
+
+// URL of the google sheet with article links and publishing information
 const ARTICLE_GSHEET_URL = "https://docs.google.com/spreadsheets/d/1JJ5EX-8RbNiuJ28sq_SwswLtMyHY9yy61s1oLEyM5mA/export?format=csv";
 
+// Main article fetching function
 function articleSetup() {
 
+	// This element is where all the articles are inserted into
 	let updatesWrapper = document.getElementById("updates");
+
+	// This regular expression matches the document ID in a url
 	docIdRegex = new RegExp('https://docs.google.com/document/d/(.*)/');
 
+	// Fetch the main google sheet, then chain a bunch of functions to it that makes sure they run properly
 	fetch(ARTICLE_GSHEET_URL)
 		.then((response) => {	
+
+			// After running, get the response text
 			response.text().then(text => {
+
+				// After getting the response text, parse the CSV file which is returned
 
 				csvData = text.split("\n")
 				csvData.forEach(function(val, index) {
 					this[index] = val.split(",");
 				}, csvData);
 
+				// .shift() removes the first row (header row)
 				csvData.shift();
-				console.dir(csvData)
+
+				// Write csvData to console for debugging, then invoke the google docs part of the program
+				console.dir(csvData);
 				appendArticles(csvData);
 
 			});
@@ -126,19 +141,22 @@ function articleSetup() {
 	
 	function appendArticles(csvData) {
 
+		// This function fetches public google docs' text and writes it to the site
+
 		csvData.forEach(function (val, index) {
 
-			console.log("Adding following article to site...");
-			console.dir(val);
-
+			// Only fetch information if the article is marked for publishing
 			if (val[4] === "TRUE") {
 
-				// Get Google Docs content based on spreadsheet URL		
+				console.log("Adding following article to site...");
+				console.dir(val);
+
+				// Get Google Docs content based on spreadsheet URL	- this is where the regex comes in handy	
 				fetch("https://docs.google.com/document/d/" + val[2].match(docIdRegex)[1] + "/export?format=txt").then(response => {
 
 					response.text().then(articleContent => {
 
-						// Choose whether image/text is aligned left or right alternatively
+						// Choose whether image/text is aligned left or right alternatively (by getting the remainder of the index over 2)
 						let leftRight = (index%2) ? "left":"right";
 
 						// Create new elements
@@ -199,6 +217,10 @@ function articleSetup() {
 				}, error => {
 					console.error(error);
 				});
+			} else {
+
+				console.log("The article " + val[0] + " was marked as Not For Publishing.");
+
 			}
 		});
 
@@ -206,12 +228,14 @@ function articleSetup() {
 
 }
 
+// After 30 seconds of continuous loading, show a help message (program likely broken)
 setTimeout(function () {
 	if (document.getElementById("articles-loading").style.display != "none") {
 		document.getElementById("loading-msg").innerHTML = 'Not loading? Report an <a href="https://github.com/jmss-plastic-oceans/jmss-plastic-oceans.github.io/issues">issue</a>.';
 	}
 }, 30000)
 
+// Only run article setup when the window loads, so we can interact with the DOM
 window.onload = articleSetup;
 
 </script>
