@@ -90,6 +90,9 @@ h5 {
 .article {
 	text-decoration: none !important;
 	color: black !important;
+	padding: 20px;
+	box-shadow: 10px 10px 60px -33px rgba(0,0,0,0.75);
+	margin-bottom: 20px;
 }
 
 h2{
