@@ -88,85 +88,18 @@
 
 <script>
 
-// ------------------------------------------
-// Google Docs API Setup
-// ------------------------------------------
-
-// Client ID and API key from the Developer Console
-var CLIENT_ID = '976719396424-f10m3t8eo0irv2vaolnik2v168qqghph.apps.googleusercontent.com';
-var API_KEY = 'AIzaSyBIZAdJyzXpKYMCazOboj83Ax3HRej9S4w';
-
-// Array of API discovery doc URLs for APIs used by the quickstart
-var DISCOVERY_DOCS = ['https://docs.googleapis.com/$discovery/rest?version=v1'];
-
-// Authorization scopes required by the API; multiple scopes can be
-// included, separated by spaces.
-var SCOPES = "https://www.googleapis.com/auth/documents.readonly https://www.googleapis.com/auth/documents";
-
-/**
-*	On load, called to load the auth2 library and API client library.
-*/
-function handleClientLoad() {
-	gapi.load('client:auth2', initClient);
-}
-
-/**
- *	Initializes the API client library and sets up sign-in state
-	*	listeners.
-	*/
-function initClient() {
-	gapi.client.init({
-		apiKey: API_KEY,
-		clientId: CLIENT_ID,
-		discoveryDocs: DISCOVERY_DOCS,
-		scope: SCOPES
-	}).then(() => {
-		articleSetup();
-	});
-}
-
-function getGDocContent(docId) {
-
-	return new Promise(resolve => {
-
-		let content = [];
-
-		gapi.client.docs.documents.get({
-			documentId: docId
-		}).then(function(response) {
-
-			var doc = response.result;
-
-			Array.from(doc.body.content).forEach(element => {
-				console.dir(element);
-				try {
-					content.push(element.paragraph.elements[0].textRun.content.trim()); 
-				} catch (e) {
-					console.error(e)
-				}
-			});
-
-			resolve(content);
-
-		}, function(response) {
-			console.error(response.result.error.message);
-		});
-
-	});
-
-}
-
 // ----------------------------------
 // Get articles
 // ----------------------------------
 
-var csvData;
+var csvData, docIdRegex;
+var publishedNum = 0;
+const ARTICLE_GSHEET_URL = "https://docs.google.com/spreadsheets/d/1JJ5EX-8RbNiuJ28sq_SwswLtMyHY9yy61s1oLEyM5mA/export?format=csv";
 
-async function articleSetup() {
+function articleSetup() {
 
 	let updatesWrapper = document.getElementById("updates");
-	let docIdRegex = new RegExp('https://docs.google.com/document/d/(.*)/');
-	const ARTICLE_GSHEET_URL = "https://docs.google.com/spreadsheets/d/1JJ5EX-8RbNiuJ28sq_SwswLtMyHY9yy61s1oLEyM5mA/export?format=csv";
+	docIdRegex = new RegExp('https://docs.google.com/document/d/(.*)/');
 
 	fetch(ARTICLE_GSHEET_URL)
 		.then((response) => {	
@@ -180,11 +113,15 @@ async function articleSetup() {
 				csvData.shift();
 				console.dir(csvData)
 				appendArticles(csvData);
+
 			});
-			return response;
 		})
 		.then((data) => {
-			console.dir(data);
+			console.log("Articles should be added now!");
+
+			document.getElementById("articles-loading").style.display = "none";
+			document.getElementById("loading-msg").style.display="none";
+
 		});
 	
 	function appendArticles(csvData) {
@@ -194,71 +131,79 @@ async function articleSetup() {
 			console.log("Adding following article to site...");
 			console.dir(val);
 
-			// Get Google Docs content based on spreadsheet URL		
-			getGDocContent(val[2].match(docIdRegex)[1]).then(articleContent => {
+			if (val[4] === "TRUE") {
 
-				// Choose whether image/text is aligned left or right alternatively
-				let leftRight = (index%2) ? "left":"right";
+				// Get Google Docs content based on spreadsheet URL		
+				fetch("https://docs.google.com/document/d/" + val[2].match(docIdRegex)[1] + "/export?format=txt").then(response => {
 
-				// Create new elements
-				let newArticleWrapper = document.createElement("div");
-				newArticleWrapper.classList.add("article");
+					response.text().then(articleContent => {
 
-				let newArticleLink = document.createElement("a");
-				newArticleLink.classList.add("article-link");
-				newArticleLink.href = val[2];
-				newArticleWrapper.appendChild(newArticleLink);
+						// Choose whether image/text is aligned left or right alternatively
+						let leftRight = (index%2) ? "left":"right";
 
-				let newArticleLinkDiv = document.createElement("div");
-				newArticleLinkDiv.classList.add(leftRight + "-title");
+						// Create new elements
+						let newArticleWrapper = document.createElement("div");
+						newArticleWrapper.classList.add("article");
 
-				let newArticleLinkDivImage = document.createElement("img");
-				newArticleLinkDivImage.src = val[3];
-				newArticleLinkDivImage.classList.add("article-img");
-				newArticleLinkDivImage.classList.add(leftRight + "-img");
-				newArticleLinkDivImage.align = leftRight;
+						let newArticleLink = document.createElement("a");
+						newArticleLink.classList.add("article-link");
+						newArticleLink.href = val[2];
+						newArticleWrapper.appendChild(newArticleLink);
 
-				let newArticleContentWrapper = document.createElement("div");
-				newArticleContentWrapper.classList.add("title-text");
+						let newArticleLinkDiv = document.createElement("div");
+						newArticleLinkDiv.classList.add(leftRight + "-title");
 
-				let newArticleContentTitle = document.createElement("h5");
-				newArticleContentTitle.classList.add("article-title");
-				newArticleContentTitle.innerHTML = val[0];
+						let newArticleLinkDivImage = document.createElement("img");
+						newArticleLinkDivImage.src = val[3];
+						newArticleLinkDivImage.classList.add("article-img");
+						newArticleLinkDivImage.classList.add(leftRight + "-img");
+						newArticleLinkDivImage.align = leftRight;
 
-				let newArticleContentSubtitle = document.createElement("h6");
-				newArticleContentSubtitle.classList.add("article-subtitle");
-				newArticleContentSubtitle.innerHTML = val[1]
+						let newArticleContentWrapper = document.createElement("div");
+						newArticleContentWrapper.classList.add("title-text");
 
-				let newArticleContentBody = document.createElement("p");
-				newArticleContentBody.classList.add("article-content");
-				newArticleContentBody.innerHTML = articleContent.join("\n").substring(0,500) + "...";
+						let newArticleContentTitle = document.createElement("h5");
+						newArticleContentTitle.classList.add("article-title");
+						newArticleContentTitle.innerHTML = val[0];
 
-				// Append elements to each other
-				newArticleContentWrapper.appendChild(newArticleContentTitle);
-				newArticleContentWrapper.appendChild(newArticleContentSubtitle);
-				newArticleContentWrapper.appendChild(newArticleContentBody);
+						let newArticleContentSubtitle = document.createElement("h6");
+						newArticleContentSubtitle.classList.add("article-subtitle");
+						newArticleContentSubtitle.innerHTML = val[1]
 
-				newArticleLinkDiv.appendChild(newArticleLinkDivImage);
-				newArticleLinkDiv.appendChild(newArticleContentWrapper);
+						let newArticleContentBody = document.createElement("p");
+						newArticleContentBody.classList.add("article-content");
+						newArticleContentBody.innerHTML = articleContent.substring(0,500) + "...";
 
-				newArticleLink.appendChild(newArticleLinkDiv);
+						// Append elements to each other
+						newArticleContentWrapper.appendChild(newArticleContentTitle);
+						newArticleContentWrapper.appendChild(newArticleContentSubtitle);
+						newArticleContentWrapper.appendChild(newArticleContentBody);
 
-				newArticleWrapper.appendChild(newArticleLink);
+						newArticleLinkDiv.appendChild(newArticleLinkDivImage);
+						newArticleLinkDiv.appendChild(newArticleContentWrapper);
 
-				updatesWrapper.appendChild(newArticleWrapper);
+						newArticleLink.appendChild(newArticleLinkDiv);
 
-				document.getElementById("loading-msg").innerText = `Please wait, articles are loading... (${index+1}/${csvData.length})`;
-				console.log("Finished!");
+						newArticleWrapper.appendChild(newArticleLink);
 
-			}, error => {
-				console.error(error);
-			});
+						updatesWrapper.appendChild(newArticleWrapper);
+
+						publishedNum++;
+
+						document.getElementById("loading-msg").innerText = `Please wait, articles are loading... (${index+1}/${csvData.length})`;
+						console.log("Finished!");
+
+
+					});
+
+				}, error => {
+					console.error(error);
+				});
+			}
 		});
 
-		document.getElementById("articles-loading").style.display = "none";
-		document.getElementById("loading-msg").style.display="none";
-
 	}
+
 }
 
 setTimeout(function () {
@@ -267,9 +212,9 @@ setTimeout(function () {
 	}
 }, 30000)
 
-</script>
+window.onload = articleSetup;
 
-<script async="true" defer="true" onload="this.onload=function(){};handleClientLoad();" onreadystatechange="if (this.readyState === 'complete') this.onload()" src="https://apis.google.com/js/api.js"></script>
+</script>
 
 </body>
 </html>
