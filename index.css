@@ -1,7 +1,6 @@
 
 body {
-	background-color:#f3f5f9;
-
+	background-color: rgb(240, 240, 240);
 }
 
 .logopic {
@@ -107,10 +106,8 @@ h5 {
 }
 
 .updates {
-	background-color:#f3f5f9;
 	padding:10px;
 	text-align:center;
-	background-color: rgb(240, 240, 240);
 }
 
 .article {
@@ -249,10 +246,42 @@ p {
 .instagram-container {
 	display: flex; /* or inline-flex */
 	flex-direction: row;
+	justify-content: space-around;
 	flex-wrap: wrap;
-	
+	align-items: flex-start;
+	width: 100%;
 }
 
+.instagram-post {
+	flex-grow: 1;
+	max-width: 40vw;
+	padding: 20px;
+	border-radius: 20px;
+	box-shadow: 10px 10px 60px -33px rgba(0,0,0,0.75);
+
+	margin-top: 2vh;
+	margin-bottom: 2vh;
+
+}
+
+.instagram-post-text {
+	overflow-wrap: break-word;
+}
+
+.instagram-post-image{
+	max-width: 36vw;
+	border-radius: 20px;
+	margin-bottom: 15px;
+}
+
+.instagram-logo {
+	opacity: 0.75;
+	max-height: 3vh;
+	margin-top: 2vh;
+	margin-left: 2vh;
+	position: absolute;
+	z-index: 100;
+}
 
 
 /*subpages*/
