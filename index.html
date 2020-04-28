@@ -316,6 +316,7 @@ function instagramSetup() {
 				let img_url = post.node.display_url;
 				let post_url = "https://instagram.com/p/" + post.node.shortcode;
 				let caption = post.node.edge_media_to_caption.edges[0].node.text;
+				let alt_caption = post.node.accessibility_caption;
 
 				let instagram_container = document.getElementById("instagram-container");
 				
@@ -329,6 +330,7 @@ function instagramSetup() {
 				let newInstagramPostImage = document.createElement("img");
 				newInstagramPostImage.classList.add("instagram-post-image");
 				newInstagramPostImage.src = img_url;
+				newInstagramPostImage.alt = alt_caption;
 
 				let newInstagramPostCaption = document.createElement("p");
 				newInstagramPostCaption.classList.add("instagram-post-text");
