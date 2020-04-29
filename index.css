@@ -21,10 +21,6 @@ h5 {
 	font-weight: bold;
 }
 
-.footer-row {
-	margin:3px;
-}
-
 .nav-row {
 	background-color: rgb(1, 1, 77);
 }
@@ -221,26 +217,15 @@ p {
 }
 
 .footer {
-	background-color:#4a6f73;
 	padding:10px;
 	font-family: Comfortaa;
 	font-weight: bold;
 	color:white;
 	bottom: 0;
 	width: 100%;
-}
-
-.footer {
 	margin-top: 30px;
-	background-color:#4a6f73;
-	padding:10px;
-	font-family: Comfortaa;
-	font-weight: bold;
-	color:white;
+	rgb(1, 1, 77)
 	position: bottom;
-	bottom: 0;
-	width: 100%;
-
 }
 
 /* Instagram posts container */
