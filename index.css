@@ -116,7 +116,7 @@ h5 {
 	color: black !important;
 	padding: 20px;
 	box-shadow: 10px 10px 60px -33px rgba(0,0,0,0.75);
-	margin-top: -46vh;
+	margin-top: -47vh;
 	opacity: 0;
 	margin-bottom: 20px;
 	transition: 1s;
@@ -255,7 +255,7 @@ p {
 
 .instagram-post {
 	flex-grow: 1;
-	max-width: 40vw;
+	max-width: 600px;
 	padding: 20px;
 	border-radius: 20px;
 	box-shadow: 10px 10px 60px -33px rgba(0,0,0,0.75);
@@ -270,7 +270,7 @@ p {
 }
 
 .instagram-post-image{
-	max-width: 36vw;
+	max-width: 550px;
 	border-radius: 20px;
 	margin-bottom: 15px;
 }
