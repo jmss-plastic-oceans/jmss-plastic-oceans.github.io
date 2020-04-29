@@ -216,16 +216,44 @@ p {
 	text-decoration: none;
 }
 
-.footer {
-	padding:10px;
-	font-family: Comfortaa;
-	font-weight: bold;
-	color:white;
-	bottom: 0;
+.intermediate-banner-wrapper {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: rgb(1, 1, 77);
 	width: 100%;
-	margin-top: 30px;
-	rgb(1, 1, 77)
-	position: bottom;
+	color: white;
+	padding: 20px;
+	user-select: none;
+}
+
+.join-convo {
+	color: white;
+	display: inline-block;
+	vertical-align: middle;
+	font-family: 'Anton', sans-serif;
+	vertical-align: middle;
+	text-decoration: none;
+	font-size: 3em;
+}
+
+.inline-img {
+	display: inline-block;
+	vertical-align: middle;
+	vertical-align: middle;
+	text-decoration: none;
+	max-height: 7em;
+}
+
+.inline-insta {
+	max-height: 3.5em;
+}
+
+.inline-img:hover, .join-convo:hover {
+	text-decoration: none;
+	color: white;
 }
 
 /* Instagram posts container */
