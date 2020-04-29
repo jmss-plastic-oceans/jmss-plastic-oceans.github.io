@@ -260,10 +260,21 @@ p {
 	vertical-align: middle;
 	text-decoration: none;
 	max-height: 7em;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 .inline-insta {
 	max-height: 3.5em;
+	filter: invert(1);
+	margin-left: 0px;
+}
+
+.inline-fb {
+
+	max-height: 3.5em;
+	max-width: 3.5em;
+
 }
 
 .inline-img:hover, .join-convo:hover {
