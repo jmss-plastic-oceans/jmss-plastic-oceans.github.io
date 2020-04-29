@@ -184,7 +184,7 @@ function collapseCoolly(classname) {
 	});
 
 	document.getElementById("collapse-btn").innerText = "View all articles";
-	document.getElementById("collapse-btn").style.backgroundColor = "rgb(1, 1, 77)";
+	document.getElementById("collapse-btn").style.backgroundColor = "#303d7b";
 	document.getElementById("collapse-btn").style.color = "white";
 
 	collapsed = true;
@@ -200,7 +200,7 @@ function unCollapse(classname) {
 	});
 
 	document.getElementById("collapse-btn").innerText = "Collapse articles";
-	document.getElementById("collapse-btn").style.backgroundColor = "rgb(222, 168, 33)";
+	document.getElementById("collapse-btn").style.backgroundColor = "#2ebfcc";
 	document.getElementById("collapse-btn").style.color = "white";
 
 	collapsed = false;

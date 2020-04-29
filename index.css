@@ -1,4 +1,10 @@
 
+/* 
+
+POA Theme: #303d7b
+
+*/
+
 body {
 	background-color:#f3f5f9;
 }
@@ -22,7 +28,7 @@ h5 {
 }
 
 .nav-row {
-	background-color: rgb(1, 1, 77);
+	background-color: #303d7b;
 }
 
 .navbar {
@@ -40,7 +46,7 @@ h5 {
 	color:white;
 	font-size:15px;
 	text-align: center;
-	background-color:rgb(1, 1, 77);
+	background-color:#303d7b;
 	text-decoration: none;
 	border-radius: 0px;
 
@@ -48,7 +54,7 @@ h5 {
 }
 
 .nav:hover {
-	background-color:rgb(222, 168, 33);
+	background-color:#2ebfcc;
 	/* font-weight: bold; */
 	color: white;
 	border-radius: 5px;
@@ -60,21 +66,9 @@ h5 {
 	transition: 0.25s;
 }
 
-.nav:after {
-
-	content: ▲;
-	color: rgb(1, 1, 77);
-	bottom: 0;
-
-	left: 50%;
-	right: 50%;
-	font-size: auto;
-
-}
-
 .collapse-btn {
 	padding: 10px;
-	background-color: rgb(1, 1, 77);
+	background-color: #303d7b;
 	color: white;
 	font-size: 16px;
 	border-radius: 5px;
@@ -119,7 +113,7 @@ h5 {
 }
 
 .article-date {
-	color: rgb(1, 1, 77);
+	color: #303d7b;
 	font-weight: bold;
 }
 
@@ -222,7 +216,7 @@ p {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	background-color: rgb(1, 1, 77);
+	background-color: #303d7b;
 	width: 100%;
 	color: white;
 	padding: 20px;
