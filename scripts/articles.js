@@ -178,7 +178,7 @@ setTimeout(function () {
 function collapseCoolly(classname) {
 	document.querySelectorAll('.' + classname).forEach((elem, index) => {
 		if (index != 0) {
-			elem.style.marginTop = `-46vh`;
+			elem.style.marginTop = `-45vh`;
 			elem.style.opacity = "0";
 		}
 	});
