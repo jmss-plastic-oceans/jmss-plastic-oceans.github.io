@@ -49,6 +49,12 @@ function instagramSetup() {
 				newInstagramPostContainer.appendChild(newInstagramIcon);
 				newInstagramPostContainer.appendChild(newInstagramPostLink);
 				newInstagramPostContainer.appendChild(newInstagramPostCaption);
+
+				// Use the Javascript Vibrant library to make the post containers match their image swatch
+				Vibrant.from(img_url).getPalette((err, palette) => {
+					newInstagramPostContainer.style.backgroundColor = `rgb(${ palette.LightVibrant._rgb.join(",") })`;	
+				});
+
 				instagram_container.appendChild(newInstagramPostContainer);
 
 			})
