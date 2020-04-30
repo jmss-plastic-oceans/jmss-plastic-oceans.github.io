@@ -324,8 +324,29 @@ p {
 	background-color: black;
 	color: yellow;
 	font-family: monospace;
-	padding: 3px;
+	padding: 5px;
 	border-radius: 2px;
+}
+
+.jmss-info-banner {
+	background-color: rgb(19, 37, 50);
+	box-shadow: inset 10px 10px 58px -43px rgba(0,0,0,0.75);
+	border-radius: 2em;
+	height: 4em;
+	width: 100%;
+}
+
+.jmss-info-banner strong {
+
+	font-size: 0.9em;
+	vertical-align: bottom;
+
+}
+
+.jmss-info-banner img {
+	max-height: 4em;
+	float: left;
+	margin-right: 15px;
 }
 
 /* Instagram posts container */
