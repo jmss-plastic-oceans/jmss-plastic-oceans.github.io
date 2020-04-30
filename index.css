@@ -40,6 +40,8 @@ h5 {
 	padding-top:10px;	
 	padding-bottom:10px;
 
+	box-sizing: border-box;
+
 	font-family: comfortaa;
 	color:white;
 	font-size:15px;
@@ -48,20 +50,20 @@ h5 {
 	text-decoration: none;
 	border-radius: 0px;
 
+	border-bottom: 0px solid red;
+
 	transition: 0.25s;
 }
 
+.nav[href="#active"] {
+	color: white;
+	border-bottom: 7px solid red;
+}
+
 .nav:hover {
-	background-color:#2ebfcc;
-	/* font-weight: bold; */
-	color: #303d7b;
-	border-radius: 5px;
-	/* font-size:16px; */
 	text-decoration: none;
-
-	transform: scale(1.1);
-
-	transition: 0.25s;
+	color: white;
+	border-bottom: 7px solid green;
 }
 
 .collapse-btn {
