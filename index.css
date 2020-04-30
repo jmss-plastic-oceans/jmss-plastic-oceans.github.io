@@ -106,10 +106,13 @@ h5 {
 	color: black !important;
 	padding: 20px;
 	box-shadow: 10px 10px 60px -33px rgba(0,0,0,0.75);
-	margin-top: -45vh;
-	opacity: 0;
+	display: none;
 	margin-bottom: 20px;
 	transition: 1s;
+}
+
+.article:first-of-type {
+	display: inline-block;
 }
 
 .article-date {
@@ -259,21 +262,22 @@ p {
 	vertical-align: middle;
 	vertical-align: middle;
 	text-decoration: none;
-	max-height: 7em;
+	max-height: 6em;
 	margin-left: 20px;
 	margin-right: 20px;
+	margin-bottom: 10px;
 }
 
 .inline-insta {
-	max-height: 3.5em;
+	max-height: 3.0em;
 	filter: invert(1);
 	margin-left: 0px;
 }
 
 .inline-fb {
 
-	max-height: 3.5em;
-	max-width: 3.5em;
+	max-height: 3em;
+	max-width: 3em;
 
 }
 

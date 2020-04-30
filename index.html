@@ -61,7 +61,7 @@
 
 		</div> -->
 
-		<h1 class="join-convo">JOIN THE CONVERSATION ON</h1><img src="images/social_icons/slack-white.svg" class="inline-img"> <a href="https://instagram.com/poa_students/"><img src="images/social_icons/insta-white.png" class="inline-img inline-insta"></a> <a href="https://facebook.com/poa_students/"><img src="images/social_icons/facebook-white.png" class="inline-img inline-fb"></a>
+		<h1 class="join-convo">JOIN THE CONVERSATION ON</h1><img id="slack-img" src="images/social_icons/slack-white.svg" class="inline-img"> <a id="insta-img" href="https://instagram.com/poa_students/"><img src="images/social_icons/insta-white.png" class="inline-img inline-insta"></a> <a id="fb-img" href="https://facebook.com/poa_students/"><img src="images/social_icons/facebook-white.png" class="inline-img inline-fb"></a>
 
 	</div>
 
@@ -126,12 +126,13 @@
 <script>
 
 // Only run article setup when the window loads, so we can interact with the DOM
-window.onload = function () { articleSetup(); instagramSetup()};
+window.onload = function () { articleSetup(); instagramSetup(); socialSetup()};
 
 </script>
 
 <script src="scripts/articles.js"></script>
 <script src="scripts/instagram.js"></script>
+<script src="scripts/social.js"></script>
 
 </body>
 </html>

@@ -178,8 +178,7 @@ setTimeout(function () {
 function collapseCoolly(classname) {
 	document.querySelectorAll('.' + classname).forEach((elem, index) => {
 		if (index != 0) {
-			elem.style.marginTop = `-45vh`;
-			elem.style.opacity = "0";
+			elem.style.display = "none";
 		}
 	});
 
@@ -194,8 +193,7 @@ function collapseCoolly(classname) {
 function unCollapse(classname) {
 	document.querySelectorAll('.' + classname).forEach((elem, index) => {
 		if (index != 0) {
-			elem.style.marginTop = 'unset';
-			elem.style.opacity = "1";
+			elem.style.display = "inline-block";
 		}
 	});
 
