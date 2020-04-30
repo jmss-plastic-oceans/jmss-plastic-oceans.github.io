@@ -27,13 +27,11 @@ h5 {
 	font-weight: bold;
 }
 
-.nav-row {
-	background-color: #303d7b;
-}
-
 .navbar {
-	padding:10px;
-	width: 100%;
+	position: sticky;
+	top: 0;
+	background-color: #303d7b;
+	z-index: 1000;
 }
 
 .nav {
@@ -245,6 +243,8 @@ p {
 	color: white;
 	padding: 20px;
 	user-select: none;
+
+	transition: 0.25s;
 }
 
 .join-convo {
@@ -266,6 +266,15 @@ p {
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-bottom: 10px;
+
+	transition: 0.25s;
+}
+
+.inline-img:hover {
+
+	transition: 0.25s;
+	transform: translateY(-5px);
+
 }
 
 .inline-insta {

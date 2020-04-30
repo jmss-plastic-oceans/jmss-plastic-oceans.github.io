@@ -40,7 +40,7 @@ function instagramSetup() {
 				newInstagramPostCaption.innerText = caption;
 
 				let newInstagramIcon = document.createElement("img");
-				newInstagramIcon.src = "images/insta_icon.webp";
+				newInstagramIcon.src = "images/social_icons/insta-color.webp";
 				newInstagramIcon.alt = "Instagram logo";
 				newInstagramIcon.classList.add("instagram-logo");
 
