@@ -1,8 +1,5 @@
-
 /* 
-
 POA Theme: #303d7b
-
 */
 
 body {
@@ -93,6 +90,7 @@ h5 {
 
 .intro {
 	background-color: #f3f5f9;
+	width:100%;
 }
 
 .updates {
@@ -408,5 +406,3 @@ p {
 	background-color: lightblue;
 	font-family:impact;
 }
-
-
