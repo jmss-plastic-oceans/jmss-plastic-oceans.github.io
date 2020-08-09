@@ -58,7 +58,7 @@ h5 {
 .nav:hover {
 	text-decoration: none;
 	color: white;
-	border-bottom: 7px solid green;
+	border-bottom: 7px solid #c09502;
 	transition: 0.25s;
 }
 
