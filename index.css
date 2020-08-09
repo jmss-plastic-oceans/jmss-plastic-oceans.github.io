@@ -306,6 +306,7 @@ p {
 .inline-red {
 
 	max-height: 3em;
+	filter: invert(1);
 	max-width: 3em;
 	
 }
