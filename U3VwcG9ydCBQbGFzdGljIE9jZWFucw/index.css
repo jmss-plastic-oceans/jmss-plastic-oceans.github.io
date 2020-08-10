@@ -4,6 +4,9 @@ POA Theme: #303d7b
 
 body {
 	background-color:#f3f5f9;
+	overflow-x: hidden;
+
+	padding: 0; margin: 0;
 }
 
 .logopic {
@@ -371,6 +374,7 @@ p {
 /* Instagram posts container */
 .instagram-container {
 	display: flex; /* or inline-flex */
+	margin-top: 3rem;
 	flex-direction: row;
 	justify-content: space-around;
 	flex-wrap: wrap;
@@ -467,5 +471,16 @@ p {
 	color:#303d7b;
 }
 
+.nojs {
+	width: 100vw;
+	background-color: lightcoral;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	min-height: 10vh;
+}
 
-
+.nojs strong {
+	text-align: center;
+	color: white;
+}
