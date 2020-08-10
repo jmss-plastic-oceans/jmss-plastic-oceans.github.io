@@ -67,8 +67,11 @@ function time(ft) {
         console.log("%c Welcome to JMSS Plastic Oceans. ", "font-size:1rem; font-weight:bold;color:black;background-color: lightblue;")
         console.log('%c' + code, "color: white; " + flags[i % flags.length]);
         i++;
+        
         t -= 10000/t;
         t = Math.abs(t);
+
+        t = (t < 500) ? (t + 500) : (t);
 
         console.log(`Delay till next flag ${ Math.round(t)/1000 }s. ${ t<800 ? "%c Epilepsy warning! ":"%c" }`, "background-color:coral; font-weight:bold");
         console.log(`Click to stop: ${document.location.href}?s=1`);
