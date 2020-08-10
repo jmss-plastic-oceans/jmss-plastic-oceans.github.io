@@ -1,0 +1,14 @@
+body {
+    margin: 0; padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+.text { text-align: center; }

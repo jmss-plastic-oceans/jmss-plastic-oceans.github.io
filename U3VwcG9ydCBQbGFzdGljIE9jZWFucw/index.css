@@ -270,15 +270,23 @@ p {
 	font-size: 3em;
 }
 
-.inline-img {
-	display: inline-block;
-	vertical-align: middle;
-	vertical-align: middle;
-	text-decoration: none;
-	max-height: 6em;
+.socials {
+	display: inline-flex;
 	margin-left: 20px;
-	margin-right: 20px;
-	margin-bottom: 10px;
+	flex-flow: row;
+	height: 100%;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.inline-img {
+	display: inline;
+	text-decoration: none;
+
+	margin: 15px;
+	padding: 0;
+
+	max-height: 3em;
 
 	transition: 0.25s;
 }
@@ -293,7 +301,6 @@ p {
 .inline-insta {
 	max-height: 3.0em;
 	filter: invert(1);
-	margin-left: 0px;
 }
 
 .inline-fb {
@@ -301,14 +308,6 @@ p {
 	max-height: 3em;
 	max-width: 3em;
 
-}
-
-.inline-red {
-
-	max-height: 3em;
-	filter: invert(1);
-	max-width: 3em;
-	
 }
 
 .inline-img:hover, .join-convo:hover {
