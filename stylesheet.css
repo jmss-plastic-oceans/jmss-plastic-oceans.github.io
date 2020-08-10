@@ -23,3 +23,5 @@ img[data-click="true"] {
 }
 
 .text { text-align: center; }
+
+.pre {padding: 5px; border-radius: 2px; background-color: black; color: yellow; font-family: monospace; }
