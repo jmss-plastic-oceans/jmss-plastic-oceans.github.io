@@ -12,6 +12,8 @@ WlVkSmVtSkhlRlJTVm5CMlZtMXdSMVpy
 TVZkaVJtaFBWMGRTVDFSV2FFTk5WbHAw
 VFZoa2FFMXNXbFpYYm5CeVVGRTlQUT09`;
 
+let doCoolCodeThing = false;
+
 let flags = [
     `background-color: black`,
     `color: white;
@@ -62,16 +64,21 @@ document.querySelectorAll("img")[0].onclick = function (e) {
 function time(ft) {
     setTimeout(() => {
         console.clear();    
-        console.log("%c Welcome to the Cool Flag Thing ", "font-size:1rem; font-weight:bold;color:black;background-color: lightblue;")
+        console.log("%c Welcome to JMSS Plastic Oceans. ", "font-size:1rem; font-weight:bold;color:black;background-color: lightblue;")
         console.log('%c' + code, "color: white; " + flags[i % flags.length]);
         i++;
         t -= 10000/t;
         t = Math.abs(t);
 
-        console.log(`Delay till next flag ${ Math.round(t)/1000 }s. ${ t<800 ? "%c Epilepsy warning! ":"%c" }`, "background-color:coral; font-weight:bold")
+        console.log(`Delay till next flag ${ Math.round(t)/1000 }s. ${ t<800 ? "%c Epilepsy warning! ":"%c" }`, "background-color:coral; font-weight:bold");
+        console.log(`Click to stop: ${document.location.href}?s=1`);
 
         time(t);
     }, ft);
 }
 
-time(t);
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get("s") != "1") { document.getElementById("cool").style.display="inline"; time(t); } else {
+    console.log("%c Welcome to JMSS Plastic Oceans. ", "font-size:1rem; font-weight:bold;color:black;background-color: lightblue;")
+    console.log(`%c| Want to see something cool?\n| Click here: ${ document.location.href.replace("?s=1", "") } and go to console.`, "color:yellow")
+}
