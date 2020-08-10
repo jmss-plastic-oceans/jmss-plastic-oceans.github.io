@@ -1,7 +1,7 @@
 body {
     margin: 0; padding: 0;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
 
     justify-content: center;
     align-items: center;
@@ -9,6 +9,17 @@ body {
     height: 100vh;
 
     font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+img {max-height: 50px; margin: 30px; transition: 0.5s; cursor: pointer; }
+
+img:hover {
+    transform: scale(1.2) rotate(5deg);
+}
+
+img[data-click="true"] {
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 0px 0px 43px 12px rgba(255,127,80,1);
 }
 
 .text { text-align: center; }
