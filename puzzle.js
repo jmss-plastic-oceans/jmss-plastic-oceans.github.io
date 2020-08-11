@@ -75,33 +75,31 @@ function time(ft) {
         t = (t < 500) ? (t + 500) : (t);
 
         console.log(`Delay till next flag ${ Math.round(t)/1000 }s. ${ t<800 ? "%c Epilepsy warning! ":"%c" }`, "background-color:coral; font-weight:bold");
-        console.log(`Type %c stop %c to stop`, "background-color: lightcoral;", "background-color:transparent");
-        console.log(`To never do this, type %c never `, "background-color: lightcoral");
+        console.log(`Type %c stop() %c to stop`, "background-color: lightcoral;", "background-color:transparent");
+        console.log(`To never do this, type %c never() `, "background-color: lightcoral");
 
         doTimeout && time(t);
     }, ft);
 }
 
-const urlParams = new URLSearchParams(window.location.search);
 let doIt = ( localStorage.getItem("doPrideAnimation") == "true" || localStorage.getItem("doPrideAnimation") == null )
 
 if (doIt) { document.getElementById("cool").style.display="inline"; time(t); } else {
     console.log("%c Welcome to JMSS Plastic Oceans. ", "font-size:1rem; font-weight:bold;color:black;background-color: lightblue;")
-    console.log(`%c| Want to see something cool?\n| Type %c cool %c into the console.`, "color:yellow", "background-color:lightcoral;color:white", "color:yellow;background-color:transparent;")
+    console.log(`%c| Want to see something cool?\n| Type %c cool() %c into the console.`, "color:yellow", "background-color:lightcoral;color:white", "color:yellow;background-color:transparent;")
 }
 
-const stop = () => {};
-const never = () => {};
-const cool = () => {};
-
-stop.toString = () => { doTimeout = false; doIt = false; }
-
-never.toString = () => {
+let stop = () => { doTimeout = false; doIt = false; return console.log("stopped.") }
+let never = () => {
     localStorage.setItem("doPrideAnimation", false);
-    document.location.reload();
+    return document.location.reload();
 }
-
-cool.toString = () => {
+let cool = () => {
     localStorage.setItem("doPrideAnimation", true);
     document.getElementById("cool").style.display="inline"; time(t);
+    return console.log("Just a sec...");
 }
+
+stop.toString = () => "Add parenthesis at the end to pause the flag animation.";
+cool.toString = () => "Add parenthesis at the end to start the animation.";
+never.toString = () => "Add parenthesis at the end to stop the flag animation.";
