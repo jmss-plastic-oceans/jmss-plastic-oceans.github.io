@@ -13,6 +13,7 @@ TVZkaVJtaFBWMGRTVDFSV2FFTk5WbHAw
 VFZoa2FFMXNXbFpYYm5CeVVGRTlQUT09`;
 
 let doCoolCodeThing = false;
+let doTimeout = true;
 
 let flags = [
     `background-color: black`,
@@ -62,26 +63,45 @@ document.querySelectorAll("img")[0].onclick = function (e) {
 }
 
 function time(ft) {
-    setTimeout(() => {
+    doTimeout && setTimeout(() => {
         console.clear();    
         console.log("%c Welcome to JMSS Plastic Oceans. ", "font-size:1rem; font-weight:bold;color:black;background-color: lightblue;")
         console.log('%c' + code, "color: white; " + flags[i % flags.length]);
         i++;
-        
+
         t -= 10000/t;
         t = Math.abs(t);
 
         t = (t < 500) ? (t + 500) : (t);
 
         console.log(`Delay till next flag ${ Math.round(t)/1000 }s. ${ t<800 ? "%c Epilepsy warning! ":"%c" }`, "background-color:coral; font-weight:bold");
-        console.log(`Click to stop: ${document.location.href}?s=1`);
+        console.log(`Type %c stop %c to stop`, "background-color: lightcoral;", "background-color:transparent");
+        console.log(`To never do this, type %c never `, "background-color: lightcoral");
 
-        time(t);
+        doTimeout && time(t);
     }, ft);
 }
 
 const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.get("s") != "1") { document.getElementById("cool").style.display="inline"; time(t); } else {
+let doIt = ( localStorage.getItem("doPrideAnimation") == "true" || localStorage.getItem("doPrideAnimation") == null )
+
+if (doIt) { document.getElementById("cool").style.display="inline"; time(t); } else {
     console.log("%c Welcome to JMSS Plastic Oceans. ", "font-size:1rem; font-weight:bold;color:black;background-color: lightblue;")
-    console.log(`%c| Want to see something cool?\n| Click here: ${ document.location.href.replace("?s=1", "") } and go to console.`, "color:yellow")
+    console.log(`%c| Want to see something cool?\n| Type %c cool %c into the console.`, "color:yellow", "background-color:lightcoral;color:white", "color:yellow;background-color:transparent;")
+}
+
+const stop = () => {};
+const never = () => {};
+const cool = () => {};
+
+stop.toString = () => { doTimeout = false; doIt = false; }
+
+never.toString = () => {
+    localStorage.setItem("doPrideAnimation", false);
+    document.location.reload();
+}
+
+cool.toString = () => {
+    localStorage.setItem("doPrideAnimation", true);
+    document.getElementById("cool").style.display="inline"; time(t);
 }
