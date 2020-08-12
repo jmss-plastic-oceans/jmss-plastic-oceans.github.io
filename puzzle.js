@@ -1,4 +1,5 @@
-let code = `VmpGYVYySXhWWGROVldoVllUSjRWbFpy
+let code = `
+VmpGYVYySXhWWGROVldoVllUSjRWbFpy
 V25kVWJIQlhWVzVPYkZKdGVIcFpWVlUx
 WWtkRmVtRkdjRlpXZWxaUVZqSjRhMUpy
 TlVsYVJuQlhZbFpLVUZkclZtdFRiVlpY
@@ -10,7 +11,8 @@ V1cwMVEyVnNVbk5YYm1SVVVteEtNRmxy
 WkhkV01ERkpVV3BHVjAxcVFYaGFSRXBH
 WlVkSmVtSkhlRlJTVm5CMlZtMXdSMVpy
 TVZkaVJtaFBWMGRTVDFSV2FFTk5WbHAw
-VFZoa2FFMXNXbFpYYm5CeVVGRTlQUT09`;
+VFZoa2FFMXNXbFpYYm5CeVVGRTlQUT09
+`;
 
 let doCoolCodeThing = false;
 let doTimeout = true;
