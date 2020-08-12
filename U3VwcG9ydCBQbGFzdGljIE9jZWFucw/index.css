@@ -415,6 +415,33 @@ p {
 	color: white;
 }
 
+.quizzes {
+	width: 100vw;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.quizzes .quiz {
+	margin: 30px;
+	border: 2px solid lightcoral;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 0 rgb(199, 199, 199);
+	transition: 0.25s;
+}
+
+.quizzes .quiz:hover {
+	box-shadow: -5px 5px rgb(199, 199, 199);
+	transform: translateX(5px) translateY(-5px);
+}
+
+.quizzes .quiz img {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
 /* Mobile formatting (keep at bottom) */
 @media screen and (max-width: 800px) {
 
