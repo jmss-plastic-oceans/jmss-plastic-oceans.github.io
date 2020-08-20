@@ -70,8 +70,10 @@ function articleSetup() {
 				console.log("Adding following article to site...");
 				console.dir(val);
 
+				let docUrl = "https://docs.google.com/document/d/" + val[2].match(docIdRegex)[1] + "/export?format=txt";
+
 				// Get Google Docs content based on spreadsheet URL	- this is where the regex comes in handy	
-				fetch(CORS + "https://docs.google.com/document/d/" + val[2].match(docIdRegex)[1] + "/export?format=txt").then(response => {
+				fetch(CORS + docUrl).then(response => {
 
 					response.text().then(articleContent => {
 
@@ -86,7 +88,15 @@ function articleSetup() {
 
 						let newArticleLink = document.createElement("a");
 						newArticleLink.classList.add("article-link");
-						newArticleLink.href = val[2];
+
+						let data = {
+							url: docUrl,
+							title: val[0]
+						};
+
+						newArticleLink.href = "article/?data=" + btoa(JSON.stringify(data));
+
+
 						//newArticleLink.style.zIndex = index + 1;
 
 						let newArticleLinkDiv = document.createElement("div");

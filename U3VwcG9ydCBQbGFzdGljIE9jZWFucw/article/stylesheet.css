@@ -1,0 +1,25 @@
+
+body {
+    padding: 2rem;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.text {
+    max-width: 900px;
+}
+
+.back {
+    position: absolute;
+    display: block;
+
+    z-index: 999;
+
+    top: 10px;
+    left: 10px;
+
+    font-size: 1rem;
+}
