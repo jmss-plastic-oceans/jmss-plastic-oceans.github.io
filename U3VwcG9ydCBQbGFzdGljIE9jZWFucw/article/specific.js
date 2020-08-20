@@ -20,6 +20,7 @@ if (!urlParams.get("data")) {
 
             let newT = document.createElement("h1");
             newT.innerText = title;
+            document.title = `${title} | Plastic Oceans @ John Monash Science School`;
 
             loading.style.display = "none";
             textWrapper.appendChild(newT);
