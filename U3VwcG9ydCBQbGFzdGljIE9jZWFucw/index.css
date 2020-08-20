@@ -5,7 +5,7 @@ POA Theme: #303d7b
 body {
 	background-color:#f3f5f9;
 	overflow-x: hidden;
-
+	font-family: Comfortaa;
 	padding: 0; margin: 0;
 }
 
@@ -520,4 +520,12 @@ p {
 
 	.information p { font-size: 0.75rem; }
 
+}
+
+
+.border-submissions {
+	border-color: #4287f5;
+	border-width: 40px 20px;
+	border-radius: 80px/60px;
+	background-color: #70a7ff;
 }
