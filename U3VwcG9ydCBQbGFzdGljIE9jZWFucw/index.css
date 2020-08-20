@@ -525,8 +525,8 @@ p {
 
 .border-submissions {
 	border-color: #4083ed;
-	border-width: 40px 20px;
-	border-radius: 80px/60px;
+	border-width: 40px / 20px;
+	border-radius: 80px / 60px;
 	background-color: #70a7ff;
 	padding: 10px;
 }
