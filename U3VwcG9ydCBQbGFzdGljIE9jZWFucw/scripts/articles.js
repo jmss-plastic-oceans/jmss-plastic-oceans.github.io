@@ -9,8 +9,11 @@ var collapsed = true;
 var csvData, docIdRegex, prevMessage;
 var publishedNum = 0;
 
+// The CORS proxy circumvents the Access-Control-Allow-Origin header on the Google servers.
+const CORS = "https://srg-cors-proxy.herokuapp.com/"
+
 // URL of the google sheet with article links and publishing information
-const ARTICLE_GSHEET_URL = "https://docs.google.com/spreadsheets/d/1JJ5EX-8RbNiuJ28sq_SwswLtMyHY9yy61s1oLEyM5mA/export?format=csv";
+const ARTICLE_GSHEET_URL = CORS + "https://docs.google.com/spreadsheets/d/1JJ5EX-8RbNiuJ28sq_SwswLtMyHY9yy61s1oLEyM5mA/export?format=csv";
 
 // Main article fetching function
 function articleSetup() {
@@ -68,7 +71,7 @@ function articleSetup() {
 				console.dir(val);
 
 				// Get Google Docs content based on spreadsheet URL	- this is where the regex comes in handy	
-				fetch("https://docs.google.com/document/d/" + val[2].match(docIdRegex)[1] + "/export?format=txt").then(response => {
+				fetch(CORS + "https://docs.google.com/document/d/" + val[2].match(docIdRegex)[1] + "/export?format=txt").then(response => {
 
 					response.text().then(articleContent => {
 
