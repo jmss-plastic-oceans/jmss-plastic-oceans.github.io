@@ -20,7 +20,8 @@ share.onclick = () => {
 
         if (localStorage.getItem(string_to_slug(articleTitle))) {
 
-            sharelink.innerText = localStorage.getItem(string_to_slug(articleTitle));
+            shortUrl = localStorage.getItem(string_to_slug(articleTitle));
+            sharelink.innerText = shortUrl;
             sharelink.href = "//" + shortUrl;
 
             try {
@@ -56,8 +57,8 @@ share.onclick = () => {
 
                 localStorage.setItem(string_to_slug(articleTitle), shortUrl);
         
-                sharelink.innerText = res.shortUrl;
-                sharelink.href = "//" + res.shortUrl;
+                sharelink.innerText = shortUrl;
+                sharelink.href = "//" + shortUrl;
         
             }).then(() => {
                 try {
