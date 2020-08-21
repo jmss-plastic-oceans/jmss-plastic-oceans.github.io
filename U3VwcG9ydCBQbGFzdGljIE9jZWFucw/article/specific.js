@@ -35,17 +35,13 @@ share.onclick = () => {
             }
 
         } else {
-            fetch('https://api.rebrandly.com/v1/links', {
+            fetch(`https://api.rebrandly.com/v1/links?domain[fullName]=${encodeURIComponent("rebrand.ly")}&slashtag=${encodeURIComponent("plasticoceansstudents-" + string_to_slug(articleTitle))}`, {
                 method: 'get',
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
                     'Content-Type': 'application/json',
                     "apikey": btoa("çV¹ßxwãÖÚó¾9ÕÎs¼×Fû")
-                },
-                body: JSON.stringify({
-                    domain: {fullName: "rebrand.ly"},
-                    slashtag: "plasticoceansstudents-" + string_to_slug(articleTitle)
-                })
+                }
             }).then(res => res.json()).then((res) => {
                 if (res.length > 0) {
                     const linkData = {
