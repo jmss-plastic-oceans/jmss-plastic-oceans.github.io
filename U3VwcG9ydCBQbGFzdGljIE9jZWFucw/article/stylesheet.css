@@ -11,6 +11,11 @@ body {
 
 }
 
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .text {
     max-width: 900px;
 }
