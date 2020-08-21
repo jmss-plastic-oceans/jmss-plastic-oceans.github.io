@@ -35,43 +35,76 @@ share.onclick = () => {
             }
 
         } else {
-
-            const linkData = {
-                destination: oldURL,
-                domain: { fullName: "rebrand.ly" },
-                title: `Article by POA Students - ${articleTitle}`
-            };
-        
             fetch('https://api.rebrandly.com/v1/links', {
-                method: 'post',
+                method: 'get',
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
                     'Content-Type': 'application/json',
                     "apikey": btoa("çV¹ßxwãÖÚó¾9ÕÎs¼×Fû")
                 },
-                body: JSON.stringify(linkData)
-            }).then(res=>res.json()).then(res => {
+                body: JSON.stringify({
+                    domain: {fullName: "rebrand.ly"},
+                    slashtag: "plasticoceansstudents-" + string_to_slug(articleTitle)
+                })
+            }).then(res => res.json()).then((res) => {
+                if (res.length > 0) {
+                    const linkData = {
+                        destination: oldURL,
+                        domain: { fullName: "rebrand.ly" },
+                        title: `Article by POA Students - ${articleTitle}`,
+                        slashtag: "plasticoceansstudents-" + string_to_slug(articleTitle)
+                    };
+                
+                    fetch('https://api.rebrandly.com/v1/links', {
+                        method: 'post',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json',
+                            "apikey": btoa("çV¹ßxwãÖÚó¾9ÕÎs¼×Fû")
+                        },
+                        body: JSON.stringify(linkData)
+                    }).then(res=>res.json()).then(res => {
+                
+                        console.log(res);
+                        shortUrl = res.shortUrl;
         
-                console.log(res);
-                shortUrl = res.shortUrl;
-
-                localStorage.setItem(string_to_slug(articleTitle), shortUrl);
-        
-                sharelink.innerText = shortUrl;
-                sharelink.href = "//" + shortUrl;
-        
-            }).then(() => {
-                try {
-                    navigator.share({
-                        title: articleTitle,
-                        text: "An article by Plastic Oceans Students",
-                        url: shortUrl
-                    })
-                } catch (e) {
-                    sharewrapper.style.visibility = "unset";
-                }
-            });
+                        localStorage.setItem(string_to_slug(articleTitle), shortUrl);
+                
+                        sharelink.innerText = shortUrl;
+                        sharelink.href = "//" + shortUrl;
+                
+                    }).then(() => {
+                        try {
+                            navigator.share({
+                                title: articleTitle,
+                                text: "An article by Plastic Oceans Students",
+                                url: shortUrl
+                            })
+                        } catch (e) {
+                            sharewrapper.style.visibility = "unset";
+                        }
+                    });
+                } else {
+                    console.log(res);
+                    shortUrl = res[0].shortUrl;
+    
+                    localStorage.setItem(string_to_slug(articleTitle), shortUrl);
             
+                    sharelink.innerText = shortUrl;
+                    sharelink.href = "//" + shortUrl;
+
+                    try {
+                        navigator.share({
+                            title: articleTitle,
+                            text: "An article by Plastic Oceans Students",
+                            url: shortUrl
+                        })
+                    } catch (e) {
+                        sharewrapper.style.visibility = "unset";
+                    }
+                }
+
+            })            
         }
 
     } else {
