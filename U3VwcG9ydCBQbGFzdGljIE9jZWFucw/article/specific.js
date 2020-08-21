@@ -16,15 +16,61 @@ closeshare.onclick = () => {
 let shortUrl, articleTitle;
 
 share.onclick = () => {
-    if (shortUrl) {
-        try {
-            navigator.share({
-                title: articleTitle,
-                text: "An article by Plastic Oceans Students",
-                url: shortUrl
-            })
-        } catch (e) {
-            sharewrapper.style.visibility = "unset";
+    if (articleTitle) {
+
+        if (localStorage.getItem(string_to_slug(articleTitle))) {
+
+            sharelink.innerText = localStorage.getItem(string_to_slug(articleTitle));
+            sharelink.href = "//" + shortUrl;
+
+            try {
+                navigator.share({
+                    title: articleTitle,
+                    text: "An article by Plastic Oceans Students",
+                    url: shortUrl
+                })
+            } catch (e) {
+                sharewrapper.style.visibility = "unset";
+            }
+
+        } else {
+
+            const linkData = {
+                destination: oldURL,
+                domain: { fullName: "rebrand.ly" },
+                title: `Article by POA Students - ${articleTitle}`
+            };
+        
+            fetch('https://api.rebrandly.com/v1/links', {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json',
+                    "apikey": "51a53394d56b49ba87451c4fc42810b7"
+                },
+                body: JSON.stringify(linkData)
+            }).then(res=>res.json()).then(res => {
+        
+                console.log(res);
+                shortUrl = res.shortUrl;
+
+                localStorage.setItem(string_to_slug(articleTitle), shortUrl);
+        
+                sharelink.innerText = res.shortUrl;
+                sharelink.href = "//" + res.shortUrl;
+        
+            }).then(() => {
+                try {
+                    navigator.share({
+                        title: articleTitle,
+                        text: "An article by Plastic Oceans Students",
+                        url: shortUrl
+                    })
+                } catch (e) {
+                    sharewrapper.style.visibility = "unset";
+                }
+            });
+            
         }
 
     } else {
@@ -83,30 +129,5 @@ if (!urlParams.get("data")) {
 
         })
     });
-
-    const linkData = {
-        destination: oldURL,
-        domain: { fullName: "rebrand.ly" },
-        title: `Article by POA Students - ${title}`
-    };
-
-    fetch('https://api.rebrandly.com/v1/links', {
-        method: 'post',
-        headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
-            "apikey": "51a53394d56b49ba87451c4fc42810b7"
-        },
-        body: JSON.stringify(linkData)
-    }).then(res=>res.json()).then(res => {
-
-        console.log(res);
-        shortUrl = res.shortUrl;
-
-        sharelink.innerText = res.shortUrl;
-        sharelink.href = "//" + res.shortUrl;
-
-    });
-
 
 }
