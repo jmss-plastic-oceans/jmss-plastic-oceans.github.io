@@ -74,6 +74,7 @@ body {
 
 #closeshare {
     font-size: 0.85rem;
+    text-decoration: none;
 }
 
 @media (max-width: 900px) {
