@@ -43,7 +43,8 @@ share.onclick = () => {
                     "apikey": btoa("çV¹ßxwãÖÚó¾9ÕÎs¼×Fû")
                 }
             }).then(res => res.json()).then((res) => {
-                if (res.length > 0) {
+                console.log(res);
+                if (res.length == 0) {
                     const linkData = {
                         destination: oldURL,
                         domain: { fullName: "rebrand.ly" },
@@ -81,7 +82,6 @@ share.onclick = () => {
                         }
                     });
                 } else {
-                    console.log(res);
                     shortUrl = res[0].shortUrl;
     
                     localStorage.setItem(string_to_slug(articleTitle), shortUrl);
