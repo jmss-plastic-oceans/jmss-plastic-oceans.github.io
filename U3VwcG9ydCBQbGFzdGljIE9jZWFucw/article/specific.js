@@ -4,15 +4,29 @@ const loading = document.getElementById("loading");
 const textWrapper = document.getElementById("text");
 const share = document.getElementById("share");
 const oldURL = document.location.href;
+
+const sharewrapper = document.getElementById("sharewrapper");
+const sharelink = document.getElementById("sharelink");
+const closeshare = document.getElementById("closeshare");
+
+closeshare.onclick = () => {
+    sharewrapper.style.visibility = "hidden";
+}
+
 let shortUrl, articleTitle;
 
 share.onclick = () => {
     if (shortUrl) {
-        navigator.share({
-            title: articleTitle,
-            text: "An article by Plastic Oceans Students",
-            url: shortUrl
-        })
+        try {
+            navigator.share({
+                title: articleTitle,
+                text: "An article by Plastic Oceans Students",
+                url: shortUrl
+            })
+        } catch (e) {
+            sharewrapper.style.visibility = "unset";
+        }
+
     } else {
         share.style.backgroundColor = "lightcoral";
         share.style.color = "white;"
@@ -85,8 +99,13 @@ if (!urlParams.get("data")) {
         },
         body: JSON.stringify(linkData)
     }).then(res=>res.json()).then(res => {
+
         console.log(res);
         shortUrl = res.shortUrl;
+
+        sharelink.innerText = res.shortUrl;
+        sharelink.href = "//" + res.shortUrl;
+
     });
 
 

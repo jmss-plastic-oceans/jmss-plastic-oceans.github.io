@@ -41,3 +41,32 @@ body {
     text-decoration: none;
     padding: 10px;
 }
+
+.sharewrapper {
+
+    display: flex;
+    position: fixed;
+    margin: 0;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    visibility: hidden;
+
+}
+
+.sharewrapper div {
+    background-color: white;
+    padding: 50px;
+}
+
+#sharelink {
+    font-size: 2rem;
+}
+
+#closeshare {
+    font-size: 0.85rem;
+}
