@@ -52,6 +52,7 @@ function articleSetup() {
 			});
 		})
 		.then((data) => {
+
 			console.log("Articles should be added now!");
 
 			document.getElementById("articles-loading").style.display = "none";
@@ -140,7 +141,7 @@ function articleSetup() {
 
 						let newArticleContentBody = document.createElement("p");
 						newArticleContentBody.classList.add("article-content");
-						newArticleContentBody.innerHTML = articleContent.substring(0,500) + "...";
+						newArticleContentBody.innerHTML = articleContent.split("\n")[0].substring(0,500) + "...";
 						//newArticleContentBody.style.zIndex = index + 1;
 
 						// Append elements to each other
