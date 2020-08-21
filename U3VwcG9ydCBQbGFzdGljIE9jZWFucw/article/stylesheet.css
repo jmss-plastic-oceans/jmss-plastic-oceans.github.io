@@ -59,8 +59,13 @@ body {
 }
 
 .sharewrapper div {
+    
     background-color: white;
     padding: 50px;
+
+    box-shadow: 10px 10px;
+    border: 2px sold #EEE;
+
 }
 
 #sharelink {
