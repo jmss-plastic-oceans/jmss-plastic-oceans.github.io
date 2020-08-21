@@ -75,3 +75,8 @@ body {
 #closeshare {
     font-size: 0.85rem;
 }
+
+@media (max-width: 900px) {
+    #sharelink { font-size: 1rem; }
+    .sharewrapper div { padding: 18px; }
+}
