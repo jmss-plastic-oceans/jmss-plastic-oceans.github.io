@@ -44,7 +44,7 @@ h5 {
 
 	font-family: comfortaa;
 	color:white;
-	font-size:15px;
+	font-size: 1rem;
 	text-align: center;
 	background-color:#303d7b;
 	text-decoration: none;
@@ -94,6 +94,11 @@ h5 {
 .intro {
 	background-color: #f3f5f9;
 	width:100%;
+}
+
+.intro h1 {
+	width: 100%;
+	padding: 30px;
 }
 
 .updates {
