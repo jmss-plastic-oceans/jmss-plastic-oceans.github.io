@@ -46,7 +46,7 @@ share.onclick = () => {
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
                     'Content-Type': 'application/json',
-                    "apikey": "51a53394d56b49ba87451c4fc42810b7"
+                    "apikey": btoa("çV¹ßxwãÖÚó¾9ÕÎs¼×Fû")
                 },
                 body: JSON.stringify(linkData)
             }).then(res=>res.json()).then(res => {
