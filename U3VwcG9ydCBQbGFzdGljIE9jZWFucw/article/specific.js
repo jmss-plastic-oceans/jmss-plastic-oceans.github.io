@@ -86,7 +86,7 @@ if (!urlParams.get("data")) {
         body: JSON.stringify(linkData)
     }).then(res=>res.json()).then(res => {
         console.log(res);
-        shortUrl = link.shortUrl;
+        shortUrl = res.shortUrl;
     });
 
 
