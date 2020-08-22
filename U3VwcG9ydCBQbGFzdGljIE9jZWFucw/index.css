@@ -438,6 +438,8 @@ p {
 	padding: 20px;
 	box-shadow: 0 0 rgb(199, 199, 199);
 	transition: 0.25s;
+	
+	max-width: 33%;
 }
 
 .quizzes .quiz:hover {
@@ -527,6 +529,10 @@ p {
 	}
 
 	.information p { font-size: 0.75rem; }
+
+	.quiz {
+		max-width: 100%;
+	}
 
 }
 

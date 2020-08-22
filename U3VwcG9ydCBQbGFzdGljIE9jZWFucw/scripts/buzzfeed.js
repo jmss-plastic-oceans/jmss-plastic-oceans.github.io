@@ -25,7 +25,7 @@ function buzzfeedSetup() {
             link.href = "https://buzzfeed.com" + b.canonical_path;
 
             let img = document.createElement("img");
-            img.src = b.images.standard;
+            img.src = b.images.big;
             
             link.appendChild(img);
             newQuizElement.appendChild(link);
