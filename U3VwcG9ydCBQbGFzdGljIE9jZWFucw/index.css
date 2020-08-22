@@ -564,8 +564,8 @@ p {
 
 .credits {
 	position: absolute;
- 	bottom: 8px;
-  	left: 16px;
+  	bottom: 20px;
+  	right: 20px;
 	background-color:#799cdb;
 	color:white;
 }
