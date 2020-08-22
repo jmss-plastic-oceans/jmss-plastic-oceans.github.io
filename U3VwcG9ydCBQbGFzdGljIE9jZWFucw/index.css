@@ -550,7 +550,7 @@ p {
 }
 
 .border-sub:hover {
-	background-color: #71c8e3;
+	background-color: #9ce2f7;
 }
 
 .border-sub {
@@ -566,6 +566,6 @@ p {
 	position: absolute;
   	bottom: 30px;
   	right: 16px;
-	background-color:#799cdb;
+	background-color:#9ce2f7;
 	color:white;
 }
