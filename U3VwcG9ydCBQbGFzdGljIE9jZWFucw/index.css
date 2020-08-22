@@ -530,7 +530,7 @@ p {
 
 	.information p { font-size: 0.75rem; }
 
-	.quiz {
+	.quizzes .quiz {
 		max-width: 100%;
 	}
 
