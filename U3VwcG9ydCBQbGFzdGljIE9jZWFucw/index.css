@@ -561,3 +561,11 @@ p {
 	padding: 30px;
 	text-align: centre;
 }
+
+.credits {
+	position: absolute;
+ 	bottom: 8px;
+  	left: 16px;
+	background-color:#799cdb;
+	color:white;
+}
