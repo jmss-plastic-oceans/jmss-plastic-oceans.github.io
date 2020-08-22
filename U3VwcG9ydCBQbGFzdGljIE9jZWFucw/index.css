@@ -540,7 +540,7 @@ p {
 .border-submissions {
 	border-width: 40px / 20px;
 	border-radius: 80px / 60px;
-	background-color: #bff0ff;
+	background-color: #71c8e3;
 	padding: 30px;
 	text-align: centre;
 }
@@ -550,7 +550,7 @@ p {
 }
 
 .border-sub:hover {
-	background-color: #bff0ff;
+	background-color: #71c8e3;
 }
 
 .border-sub {
