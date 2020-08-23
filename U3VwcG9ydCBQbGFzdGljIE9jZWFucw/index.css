@@ -226,7 +226,7 @@ p {
 	margin: 15px;
 	padding: 0;
 
-	max-height: 3em;
+	max-height: 4em;
 
 	transition: 0.25s;
 }
@@ -239,14 +239,14 @@ p {
 }
 
 .inline-insta {
-	max-height: 3.0em;
-	filter: invert(1);
+	max-height: 4.0em;
+	max-width:4em;
 }
 
 .inline-fb {
 
-	max-height: 3em;
-	max-width: 3em;
+	max-height: 4em;
+	max-width: 4em;
 
 }
 
@@ -534,30 +534,42 @@ p {
 		max-width: 100%;
 	}
 
+	h3 {
+		font-size:1em;
+	}
 }
 
 
 .border-submissions {
 	border-width: 40px / 20px;
 	border-radius: 80px / 60px;
-	background-color: #bff0ff;
+	background-color: #71c8e3;
 	padding: 30px;
+	margin-top:0px;
 	text-align: centre;
 }
 
 .border-submissions:hover {
-	background-color: #b5e0ff;
+	background-color: #8dd5eb;
 }
 
 .border-sub:hover {
-	background-color: #bff0ff;
+	background-color: #9ce2f7;
 }
 
 .border-sub {
 	border-color: #4083ed;
 	border-width: 40px / 20px;
 	border-radius: 80px / 60px;
-	background-color: #b5e0ff;
+	background-color: #8dd5eb;
 	padding: 30px;
 	text-align: centre;
+}
+
+.credits {
+	position: absolute;
+  	bottom: 30px;
+  	right: 16px;
+	background-color:#9ce2f7;
+	color:white;
 }
