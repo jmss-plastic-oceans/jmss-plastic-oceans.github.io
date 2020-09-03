@@ -143,15 +143,27 @@ if (!urlParams.get("data")) {
 
     const { url, title } = JSON.parse(atob(urlParams.get("data")));
     articleTitle = title;
+    let code;
 
     fetch(CORS + url).then((response) => {
+        code = response.status;
         response.text().then((text) => {
 
             let newP = document.createElement("p")
-            newP.innerText = text;
-
             let newT = document.createElement("h1");
-            newT.innerText = title;
+
+            if (text.toLowerCase().includes("!doctype")) {
+                newP.innerHTML = text;
+            } else {
+                newP.innerText = text;
+            }
+
+            if (code != 200) {
+                newT.style.fontFamily = 'monospace';
+                newT.innerText = "error " + code;
+            } else {
+                newT.innerText = title;
+            }
 
             loading.style.display = "none";
             textWrapper.appendChild(newT);

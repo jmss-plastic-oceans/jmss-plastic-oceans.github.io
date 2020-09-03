@@ -88,3 +88,5 @@ a {
     #sharelink { font-size: 1rem; }
     .sharewrapper div { padding: 18px; }
 }
+
+.nojs { display: none; }
