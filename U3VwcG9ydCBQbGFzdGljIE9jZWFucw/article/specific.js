@@ -146,23 +146,22 @@ if (!urlParams.get("data")) {
     let code;
 
     fetch(CORS + url).then((response) => {
-        code = response.status;
+        code = [response.status, response.statusText];
         response.text().then((text) => {
 
             let newP = document.createElement("p")
             let newT = document.createElement("h1");
 
-            if (text.toLowerCase().includes("!doctype")) {
-                newP.innerHTML = text;
-            } else {
-                newP.innerText = text;
-            }
+            newP.innerText = text;
 
-            if (code != 200) {
+            if (code[0] != 200) {
                 newT.style.fontFamily = 'monospace';
-                newT.innerText = "error " + code;
+                newT.innerHTML = "error " + code[0] + " - please <a href='https://github.com/jmss-plastic-oceans/jmss-plastic-oceans.github.io/issues/new'>file an issue</a>.";
+                newP.innerHTML = "For media team: please check document access restrictions.<br>Error message: " + code[1];
+                document.title = "error " + code[0];
             } else {
                 newT.innerText = title;
+                document.title = `${title} | Article | Plastic Oceans Students`
             }
 
             loading.style.display = "none";
