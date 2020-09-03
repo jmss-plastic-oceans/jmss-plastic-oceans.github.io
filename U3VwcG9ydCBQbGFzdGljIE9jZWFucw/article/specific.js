@@ -157,7 +157,7 @@ if (!urlParams.get("data")) {
             if (code[0] != 200) {
                 newT.style.fontFamily = 'monospace';
                 newT.innerHTML = "error " + code[0] + " - please <a href='https://github.com/jmss-plastic-oceans/jmss-plastic-oceans.github.io/issues/new'>file an issue</a>.";
-                newP.innerHTML = "For media team: please check document access restrictions.<br>Error message: " + code[1];
+                newP.innerHTML = "For media team: please check document access restrictions (visible to everyone).<br>Error message: " + code[1];
                 document.title = "error " + code[0];
             } else {
                 newT.innerText = title;
