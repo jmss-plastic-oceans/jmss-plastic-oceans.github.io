@@ -22,13 +22,13 @@ share.onclick = () => {
 
             shortUrl = localStorage.getItem(string_to_slug(articleTitle));
             sharelink.innerText = shortUrl;
-            sharelink.href = "//" + shortUrl;
+            sharelink.href = "https://" + shortUrl;
 
             try {
                 navigator.share({
                     title: articleTitle,
                     text: "An article by Plastic Oceans Students",
-                    url: shortUrl
+                    url: "//" + shortUrl
                 })
             } catch (e) {
                 sharewrapper.style.visibility = "unset";
@@ -75,7 +75,7 @@ share.onclick = () => {
                             navigator.share({
                                 title: articleTitle,
                                 text: "An article by Plastic Oceans Students",
-                                url: shortUrl
+                                url: "//" + shortUrl
                             })
                         } catch (e) {
                             sharewrapper.style.visibility = "unset";
@@ -93,7 +93,7 @@ share.onclick = () => {
                         navigator.share({
                             title: articleTitle,
                             text: "An article by Plastic Oceans Students",
-                            url: shortUrl
+                            url: "//" + shortUrl
                         })
                     } catch (e) {
                         sharewrapper.style.visibility = "unset";
@@ -137,38 +137,62 @@ function string_to_slug (str) {
 
 if (!urlParams.get("data")) {
 
-    loading.innerHTML = "Sorry! Article not found. <a href='../'>Go back</a>";
+    loading.innerHTML = "Sorry! Article not found. <a href='../' style='text-decoration:underline'>Go back</a>";
 
 } else {
 
-    const { url, title } = JSON.parse(atob(urlParams.get("data")));
-    articleTitle = title;
-    let code;
+    let go = true;
+    let url, title;
 
-    fetch(CORS + url).then((response) => {
-        code = [response.status, response.statusText];
-        response.text().then((text) => {
+    try {
+        data = JSON.parse(atob(urlParams.get("data")));
+        url = data.url; title = data.title;
+    } catch (e) {
+        let newP = document.createElement("p")
+        let newT = document.createElement("h1");
+        newT.style.fontFamily = 'monospace';
+        newT.innerHTML = "Error - please check the page URL or <a href='https://github.com/jmss-plastic-oceans/jmss-plastic-oceans.github.io/issues/new'>file an issue</a>.";
+        newP.innerHTML = "If you got to this page from a link, please notify the media team. Otherwise, check the URL.<br><br>[<code>" + e + "</code>]";
+        document.title = "error " + e;
 
-            let newP = document.createElement("p")
-            let newT = document.createElement("h1");
+        loading.style.display = "none";
+        textWrapper.appendChild(newT);
+        textWrapper.appendChild(newP);
 
-            newP.innerText = text;
+        go = false;
+    }
 
-            if (code[0] != 200) {
-                newT.style.fontFamily = 'monospace';
-                newT.innerHTML = "error " + code[0] + " - please <a href='https://github.com/jmss-plastic-oceans/jmss-plastic-oceans.github.io/issues/new'>file an issue</a>.";
-                newP.innerHTML = "For media team: please check document access restrictions (visible to everyone).<br>Error message: " + code[1];
-                document.title = "error " + code[0];
-            } else {
-                newT.innerText = title;
-                document.title = `${title} | Article | Plastic Oceans Students`
-            }
+    if (go) {
 
-            loading.style.display = "none";
-            textWrapper.appendChild(newT);
-            textWrapper.appendChild(newP);
+        articleTitle = title;
+        let code;
 
-        })
-    });
+        fetch(CORS + url).then((response) => {
+            code = [response.status, response.statusText];
+            response.text().then((text) => {
+
+                let newP = document.createElement("p")
+                let newT = document.createElement("h1");
+
+                newP.innerText = text;
+
+                if (code[0] != 200) {
+                    newT.style.fontFamily = 'monospace';
+                    newT.innerHTML = "error " + code[0] + " - please <a href='https://github.com/jmss-plastic-oceans/jmss-plastic-oceans.github.io/issues/new'>file an issue</a>.";
+                    newP.innerHTML = "For media team: please check document access restrictions (visible to everyone).<br>Error message: " + code[1];
+                    document.title = "error " + code[0];
+                } else {
+                    newT.innerText = title;
+                    document.title = `${title} | Article | Plastic Oceans Students`
+                }
+
+                loading.style.display = "none";
+                textWrapper.appendChild(newT);
+                textWrapper.appendChild(newP);
+
+            })
+        });
+
+    }
 
 }
