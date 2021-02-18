@@ -1,7 +1,7 @@
 // Buzzfeed quiz-grabbing code!
 
 // Feed URL - redirected through CORS Anywhere so we can access it cross-origin.
-let feed_url = "https://cors-anywhere.herokuapp.com/https://www.buzzfeed.com/api/v2/feeds/poa_students";
+let feed_url = "https://srg-cors-proxy.herokuapp.com/https://www.buzzfeed.com/api/v2/feeds/poa_students";
 
 function buzzfeedSetup() {
     // Quizzes element
