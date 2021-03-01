@@ -13,7 +13,7 @@ var publishedNum = 0;
 const CORS = "https://srg-cors-proxy.herokuapp.com/"
 
 // URL of the google sheet with article links and publishing information
-const ARTICLE_GSHEET_URL = CORS + "https://docs.google.com/spreadsheets/d/1JJ5EX-8RbNiuJ28sq_SwswLtMyHY9yy61s1oLEyM5mA/export?format=csv";
+const ARTICLE_GSHEET_URL = CORS + "https://docs.google.com/spreadsheets/d/1twAf3i_0UoV1vm9gVbBa6W0EzKShxj9khc6e2GJrqPg/export?format=csv";
 
 // Main article fetching function
 function articleSetup() {
