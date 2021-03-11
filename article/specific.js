@@ -14,9 +14,10 @@ closeshare.onclick = () => {
 }
 
 let shortUrl, articleTitle;
+let allowShare = false;
 
 share.onclick = () => {
-    if (articleTitle) {
+    if (articleTitle && allowShare) {
 
         if (localStorage.getItem(string_to_slug(articleTitle))) {
 
@@ -141,8 +142,8 @@ if (!urlParams.get("data")) {
 
 } else {
 
-    let go = true;
     let url, title;
+    let doRequest = true;
 
     try {
         data = JSON.parse(atob(urlParams.get("data")));
@@ -153,16 +154,23 @@ if (!urlParams.get("data")) {
         newT.style.fontFamily = 'monospace';
         newT.innerHTML = "Error - please check the page URL or <a href='https://github.com/jmss-plastic-oceans/jmss-plastic-oceans.github.io/issues/new'>file an issue</a>.";
         newP.innerHTML = "If you got to this page from a link, please notify the media team. Otherwise, check the URL.<br><br>[<code>" + e + "</code>]";
-        document.title = "error " + e;
+        document.title = `Error | JMSS Plastic Oceans`;
 
         loading.style.display = "none";
         textWrapper.appendChild(newT);
         textWrapper.appendChild(newP);
 
-        go = false;
+        allowShare = false;
+        doRequest = false;
+
+        share.classList.add("disabled");
+        share.onclick = () => {
+            alert("We're sorry, we can't share this article right now. Please contact the media team.");
+        }
+
     }
 
-    if (go) {
+    if (doRequest) {
 
         articleTitle = title;
         let code;
@@ -180,10 +188,11 @@ if (!urlParams.get("data")) {
                     newT.style.fontFamily = 'monospace';
                     newT.innerHTML = "error " + code[0] + " - please <a href='https://github.com/jmss-plastic-oceans/jmss-plastic-oceans.github.io/issues/new'>file an issue</a>.";
                     newP.innerHTML = "For media team: please check document access restrictions (visible to everyone).<br>Error message: " + code[1];
-                    document.title = "error " + code[0];
+                    document.title = "Error | JMSS Plastic Oceans";
                 } else {
                     newT.innerText = title;
-                    document.title = `${title} | Article | Plastic Oceans Students`
+                    document.title = `${title} | Article | Plastic Oceans Students`;
+                    allowShare = true;
                 }
 
                 loading.style.display = "none";

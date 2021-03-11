@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-items: flex-start;
 
-    font-family: 'Lora', serif; 
+    font-family: 'PT Serif', serif; 
 
 }
 
@@ -22,6 +22,7 @@ a:hover {
 
 .text {
     max-width: 800px;
+    line-height: 1.5;
 }
 
 .back {
@@ -55,6 +56,10 @@ a:hover {
     transition: 0.5s;
     background-color: #EEE;
     border: 2px solid gray;
+}
+
+.share.disabled {
+    display: none;
 }
 
 .back, .share {
@@ -104,9 +109,25 @@ a:hover {
     .sharewrapper div { padding: 18px; }
 }
 
-.nojs { display: none; }
+.nojs { color: red; text-decoration: underline; display: none; }
 
 img {
     max-width: 100%;
     border-radius: 15px;
+}
+
+iframe {
+    max-width: 100%;
+    align-self: center;
+    /* margin: 20px; */
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.loader {
+    display: inline-block;
+    animation: spin 2s infinite;
 }
