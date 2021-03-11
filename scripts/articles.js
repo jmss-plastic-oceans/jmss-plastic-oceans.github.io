@@ -78,6 +78,19 @@ function articleSetup() {
 
 					response.text().then(articleContent => {
 
+						let isValid = true;
+						
+						if (response.headers.get("Content-Type").includes("text/html")) {
+
+							console.log(`=== ATTENTION PLASTIC OCEANS DEVELOPER ===
+Article ID ${val[2].match(docIdRegex)[1]} is invalid - check permissions!
+Article has been restricted.`);
+
+							articleContent = "ATTENTION: Article cannot be fetched by the website. Please try again later. [Error: Google Authorization failed].";
+							isValid = false;
+
+						}
+
 						// Choose whether image/text is aligned left or right alternatively (by getting the remainder of the index over 2)
 						let leftRight = (index%2) ? "right":"left";
 
@@ -87,6 +100,10 @@ function articleSetup() {
 						newArticleWrapper.style.zIndex = index + 1;
 						newArticleWrapper.style.zIndex = index + 1;
 
+						if (!isValid) {
+							newArticleWrapper.classList.add("invalid-article");
+						}
+
 						let newArticleLink = document.createElement("a");
 						newArticleLink.classList.add("article-link");
 
@@ -95,8 +112,7 @@ function articleSetup() {
 							title: val[0]
 						};
 
-						newArticleLink.href = "article/?data=" + btoa(JSON.stringify(data));
-
+						newArticleLink.href = isValid ? "article/?data=" + btoa(JSON.stringify(data)): "javascript:alert('There was an error fetching this article, so we can\\'t show it right now. Please try again later.')";
 
 						//newArticleLink.style.zIndex = index + 1;
 
@@ -105,11 +121,11 @@ function articleSetup() {
 						//newArticleLinkDiv.style.zIndex = index + 1;
 
 						let newArticleLinkDivImage = document.createElement("img");
-						newArticleLinkDivImage.src = val[3];
+						newArticleLinkDivImage.src = isValid ? (val[3] || `https://lh3.google.com/u/0/d/${val[2].match(docIdRegex)[1]}=k`) : "http://1.bp.blogspot.com/-_YrXXcaGrhw/Uorol4N7jpI/AAAAAAAAPFM/SpJzbfGIhfk/s1600/Screen+Shot+2013-11-18+at+11.19.22+PM.png";
 						newArticleLinkDivImage.classList.add("article-img");
 						newArticleLinkDivImage.classList.add(leftRight + "-img");
 						newArticleLinkDivImage.align = leftRight;
-						newArticleLinkDivImage.alt = "Article thumbnail image";
+						newArticleLinkDivImage.alt = val[3] ? "Article thumbnail image":"Image showing printout of the article text";
 						//newArticleLinkDivImage.style.zIndex = index + 1;
 
 						let newArticleContentWrapper = document.createElement("div");
@@ -145,7 +161,7 @@ function articleSetup() {
 						let articleTextOnlySpan = document.createElement("span");
 						articleTextOnlySpan.innerHTML = marked(articleContent);
 
-						newArticleContentBody.innerHTML = articleTextOnlySpan.innerText.split("\n")[0].substring(0,500) + "...";
+						newArticleContentBody.innerHTML = articleTextOnlySpan.innerText.split("\n")[0].substring(0,500) + (isValid ? "...":"");
 						//newArticleContentBody.style.zIndex = index + 1;
 
 						// Append elements to each other

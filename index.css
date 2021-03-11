@@ -114,6 +114,28 @@ h5 {
 	display: none;
 	margin-bottom: 20px;
 	transition: 1s;
+	
+	width: 100%;
+
+	border-radius: 15px;
+}
+
+.article.invalid-article {
+
+	opacity: 0.2 !important;
+	user-select: none;
+	cursor: not-allowed;
+	border: 2px solid red;
+
+}
+
+.article.invalid-article * {
+	user-select: none;
+	cursor: not-allowed;
+}
+
+.article.invalid-article a {
+	text-decoration: none !important;
 }
 
 .article:first-of-type {
