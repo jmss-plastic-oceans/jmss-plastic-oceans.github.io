@@ -16,6 +16,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 .text {
     max-width: 800px;
 }
@@ -39,7 +43,18 @@ a {
     top: 10px;
     right: 10px;
 
+    transition: 0.5s;
+
     color: black;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid #EEE;
+}
+
+.share:hover {
+    transition: 0.5s;
+    background-color: #EEE;
+    border: 2px solid gray;
 }
 
 .back, .share {
@@ -90,3 +105,8 @@ a {
 }
 
 .nojs { display: none; }
+
+img {
+    max-width: 100%;
+    border-radius: 15px;
+}

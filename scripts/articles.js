@@ -13,7 +13,7 @@ var publishedNum = 0;
 const CORS = "https://srg-cors-proxy.herokuapp.com/"
 
 // URL of the google sheet with article links and publishing information
-const ARTICLE_GSHEET_URL = CORS + "https://docs.google.com/spreadsheets/d/1JJ5EX-8RbNiuJ28sq_SwswLtMyHY9yy61s1oLEyM5mA/export?format=csv";
+const ARTICLE_GSHEET_URL = CORS + "https://docs.google.com/spreadsheets/d/1twAf3i_0UoV1vm9gVbBa6W0EzKShxj9khc6e2GJrqPg/export?format=csv";
 
 // Main article fetching function
 function articleSetup() {
@@ -141,7 +141,11 @@ function articleSetup() {
 
 						let newArticleContentBody = document.createElement("p");
 						newArticleContentBody.classList.add("article-content");
-						newArticleContentBody.innerHTML = articleContent.split("\n")[0].substring(0,500) + "...";
+
+						let articleTextOnlySpan = document.createElement("span");
+						articleTextOnlySpan.innerHTML = marked(articleContent);
+
+						newArticleContentBody.innerHTML = articleTextOnlySpan.innerText.split("\n")[0].substring(0,500) + "...";
 						//newArticleContentBody.style.zIndex = index + 1;
 
 						// Append elements to each other

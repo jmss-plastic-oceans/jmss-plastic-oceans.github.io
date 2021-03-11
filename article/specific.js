@@ -174,7 +174,7 @@ if (!urlParams.get("data")) {
                 let newP = document.createElement("p")
                 let newT = document.createElement("h1");
 
-                newP.innerText = text;
+                newP.innerHTML = marked(text);
 
                 if (code[0] != 200) {
                     newT.style.fontFamily = 'monospace';

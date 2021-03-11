@@ -5,7 +5,7 @@ function instagramSetup() {
 
 	// Turn out if you append __a=1 to the end of any Instagram user URL then you get a JSON page with posts
 
-	fetch(`https://www.instagram.com/${POA_INSTA_USR}/?__a=1`).then(response => {
+	fetch(`https://srg-cors-proxy.herokuapp.com/https://www.instagram.com/${POA_INSTA_USR}/?__a=1`).then(response => {
 
 		// Instead of response.text() just parse it as JSON straight up
 		response.json().then(raw_json => {
