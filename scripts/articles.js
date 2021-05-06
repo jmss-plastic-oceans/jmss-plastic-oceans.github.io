@@ -1,4 +1,5 @@
 var collapsed = true;
+const ARTICLE_IMG_FAILED_SRC = "http://1.bp.blogspot.com/-_YrXXcaGrhw/Uorol4N7jpI/AAAAAAAAPFM/SpJzbfGIhfk/s1600/Screen+Shot+2013-11-18+at+11.19.22+PM.png";
 
 
 // ----------------------------------
@@ -121,7 +122,8 @@ Article has been restricted.`);
 						//newArticleLinkDiv.style.zIndex = index + 1;
 
 						let newArticleLinkDivImage = document.createElement("img");
-						newArticleLinkDivImage.src = isValid ? (val[3] || `https://lh3.google.com/u/0/d/${val[2].match(docIdRegex)[1]}=k`) : "http://1.bp.blogspot.com/-_YrXXcaGrhw/Uorol4N7jpI/AAAAAAAAPFM/SpJzbfGIhfk/s1600/Screen+Shot+2013-11-18+at+11.19.22+PM.png";
+						newArticleLinkDivImage.src = isValid ? (val[3] || `https://lh3.google.com/u/0/d/${val[2].match(docIdRegex)[1]}=k`) : ARTICLE_IMG_FAILED_SRC;
+						newArticleLinkDivImage.onerror = (e) => { console.log("Image for article is not valid " + e.target.src); e.target.src=ARTICLE_IMG_FAILED_SRC }
 						newArticleLinkDivImage.classList.add("article-img");
 						newArticleLinkDivImage.classList.add(leftRight + "-img");
 						newArticleLinkDivImage.align = leftRight;
