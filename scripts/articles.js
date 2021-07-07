@@ -38,10 +38,8 @@ function articleSetup() {
 
 				// After getting the response text, parse the CSV file which is returned
 
-				csvData = text.split("\n")
-				csvData.forEach(function(val, index) {
-					this[index] = val.split(",");
-				}, csvData);
+				csvData = text.split("\n");
+				csvData = csvData.map(x => x.split(",").slice(1))
 
 				// .shift() removes the first row (header row)
 				csvData.shift();
