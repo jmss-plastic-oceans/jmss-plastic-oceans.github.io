@@ -117,6 +117,17 @@ share.onclick = () => {
 // The CORS proxy circumvents the Access-Control-Allow-Origin header on the Google servers.
 const CORS = "https://srg-cors-proxy.herokuapp.com/";
 
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}
+
 function string_to_slug (str) {
     str = str.replace(/^\s+|\s+$/g, ''); // trim
     str = str.toLowerCase();
@@ -132,7 +143,14 @@ function string_to_slug (str) {
     str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
         .replace(/\s+/g, '-') // collapse whitespace and replace by -
         .replace(/-+/g, '-'); // collapse dashes
-
+    
+    if (str.length < 5){
+        
+        str = makeid(5)
+           
+    }
+    
+    
     return str;
 }
 
