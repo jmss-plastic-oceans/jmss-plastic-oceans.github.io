@@ -14,7 +14,7 @@ var publishedNum = 0;
 const CORS = "https://srg-cors-proxy.herokuapp.com/"
 
 // URL of the google sheet with article links and publishing information
-const ARTICLE_GSHEET_URL = CORS + "https://docs.google.com/spreadsheets/d/1twAf3i_0UoV1vm9gVbBa6W0EzKShxj9khc6e2GJrqPg/export?format=csv";
+const ARTICLE_GSHEET_URL = CORS + "https://docs.google.com/spreadsheets/d/1twAf3i_0UoV1vm9gVbBa6W0EzKShxj9khc6e2GJrqPg/export?format=tsv";
 
 // Main article fetching function
 function articleSetup() {
@@ -39,7 +39,7 @@ function articleSetup() {
 				// After getting the response text, parse the CSV file which is returned
 
 				csvData = text.split("\n");
-				csvData = csvData.map(x => x.split(",").slice(1))
+				csvData = csvData.map(x => x.split("\t").slice(1))
 
 				// .shift() removes the first row (header row)
 				csvData.shift();
